@@ -1,0 +1,44 @@
+Registration form with captcha
+==============================
+
+Setup.
+
+    >>> browser = self.browser
+    >>> browser.open('http://nohost/plone/login_form')
+    >>> browser.getControl('Login Name').value = 'admin'
+    >>> browser.getControl('Password').value = 'secret'
+    >>> browser.getControl('Log in').click()
+    >>> browser.open('http://nohost/plone/@@security-controlpanel')
+    >>> browser.getControl('Enable self-registration').selected = True
+    >>> browser.getControl('Save').click()
+    >>> 'Changes saved' in browser.contents
+    True
+    >>> self.setMailHost()
+
+First test the base case.
+::
+
+    >>> browser.open('http://nohost/plone/@@register')
+    >>> 'captcha' in browser.contents
+    True
+
+Trying to register without satisfying the captcha constrain will result
+in an error.
+::
+
+    >>> browser.getControl('User Name').value = 'user1'
+    >>> browser.getControl('E-mail').value = 'user1@example.com'
+    >>> browser.getControl('Register').click()
+    >>> 'There were errors' in browser.contents
+    True
+
+Satisfying the constraints imposed by the captcha will result in a
+successful user registration.
+::
+
+    >>> browser.getControl('User Name').value = 'user1'
+    >>> browser.getControl('E-mail').value = 'user1@example.com'
+    >>> browser.getControl(name='test_captcha').value = 'please_ignore'
+    >>> browser.getControl('Register').click()
+    >>> 'There were errors' in browser.contents
+    False
