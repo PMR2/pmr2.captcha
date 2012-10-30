@@ -25,6 +25,7 @@ setup(name='pmr2.captcha',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'plone.app.users>=1.0.1',
       ],
       entry_points="""
       # -*- Entry points: -*-
