@@ -9,7 +9,6 @@ package must be installed before the captcha will function.
 
 .. _collective.captcha: http://pypi.python.org/pypi/collective.captcha
 
-------------
 Installation
 ------------
 
@@ -21,7 +20,6 @@ script files.
 
 .. _plone.app.users: http://pypi.python.org/pypi/plone.app.users
 
-~~~~~~~~~~~~~~~~~~~~~~~~
 Installing with buildout
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
