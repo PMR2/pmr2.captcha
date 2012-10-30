@@ -7,8 +7,6 @@ from Products.Five import fiveconfigure
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup, onteardown
 
-from pmr2.testing import base
-
 
 @onsetup
 def setup():
