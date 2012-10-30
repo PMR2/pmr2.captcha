@@ -14,15 +14,21 @@ class CaptchaMixin(object):
     captcha_label = u'label_captcha'
     captcha_errmsg = ''
 
-    def captcha(self):
+    def getCaptcha(self):
         result = self.context.restrictedTraverse('@@captcha', None)
         return result
+
+    def hasCaptcha(self):
+        return self.getCaptcha() is not None
+
+    def image_tag(self):
+        return self.getCaptcha().image_tag()
 
     def validate_captcha(self, action, data):
         errors = []
 
-        captcha = self.captcha()
-        if self.captcha is None:
+        captcha = self.getCaptcha()
+        if captcha is None:
             # nothing to be done, and we won't fail prematurely here.
             return errors
  

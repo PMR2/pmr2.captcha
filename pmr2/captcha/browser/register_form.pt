@@ -17,12 +17,11 @@
         <div id="content">
             <tal:mailhost tal:condition="view/showForm">
                 <div metal:use-macro="context/base-pageform.html/form">
-                   <tal:if tal:condition="view/captcha">
-                       <metal:fill fill-slot="above_buttons">
-                           <tal:block tal:replace="
-                              structure python:view.captcha().image_tag()" />
-                       </metal:fill>
-                   </tal:if>
+                   <metal:fill fill-slot="above_buttons">
+                       <tal:if tal:condition="view/hasCaptcha">
+                           <tal:block tal:replace="structure view/image_tag" />
+                       </tal:if>
+                   </metal:fill>
                 </div>
             </tal:mailhost>
 

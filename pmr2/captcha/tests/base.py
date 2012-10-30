@@ -15,7 +15,6 @@ def setup():
     import pmr2.captcha
     fiveconfigure.debug_mode = True
     zcml.load_config('configure.zcml', pmr2.captcha)
-    zcml.load_config('test.zcml', pmr2.captcha.tests)
     fiveconfigure.debug_mode = False
     ztc.installPackage('pmr2.captcha')
 
