@@ -20,7 +20,7 @@ have already installed this product, this will be visible.
 ::
 
     >>> browser.open('http://nohost/plone/@@register')
-    >>> '<input name="test_captcha" type="hidden" />' in browser.contents
+    >>> '<input name="test_captcha" type="hidden"' in browser.contents
     True
 
 Trying to register without satisfying the captcha constrain will result
